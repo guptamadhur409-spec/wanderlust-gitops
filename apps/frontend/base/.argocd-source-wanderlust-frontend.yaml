@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - akstestingtrialcrrt.azurecr.io/wanderlust-frontend:v1.0.9
