@@ -8,9 +8,6 @@ spec:
     updateStrategy: semver
     allowTags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
     pullSecret: pullsecret:argo/acr-pull-secret
-  images:
-    - alias: frontend
-      imageName: akstestingtrialcrrt.azurecr.io/wanderlust-frontend
   writeBackConfig:
     method: git
     gitConfig:
@@ -19,3 +16,6 @@ spec:
   applicationRefs:
     - namePattern: ^wanderlust-frontend$
       useAnnotations: true
+      images:
+        - alias: frontend
+          imageName: akstestingtrialcrrt.azurecr.io/wanderlust-frontend
