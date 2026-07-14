@@ -23,7 +23,7 @@ spec:
   source:
     repoURL: https://github.com/guptamadhur409-spec/wanderlust-gitops.git
     targetRevision: main
-    path: apps/frontend/overlays/dev
+    path: apps/frontend/base
 
   destination:
     server: https://kubernetes.default.svc
