@@ -11,7 +11,7 @@ metadata:
 
     argocd-image-updater.argoproj.io/frontend.update-strategy: semver
 
-    argocd-image-updater.argoproj.io/frontend.allow-tags: regexp:^1\.[0-9]+\.[0-9]+$
+    argocd-image-updater.argoproj.io/frontend.allow-tags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
 
     argocd-image-updater.argoproj.io/write-back-method: git
 
@@ -27,7 +27,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: wanderlust-dev
+    namespace: wanderlust
 
   syncPolicy:
     automated:
