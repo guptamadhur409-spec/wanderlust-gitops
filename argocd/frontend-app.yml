@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: wanderlust-frontend
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/guptamadhur409-spec/wanderlust-gitops.git
+    targetRevision: main
+    path: apps/frontend/overlays/dev
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wanderlust
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
