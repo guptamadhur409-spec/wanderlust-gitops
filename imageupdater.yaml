@@ -1,0 +1,21 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: wanderlust-image-updater
+  namespace: argo
+spec:
+  commonUpdateSettings:
+    updateStrategy: semver
+    allowTags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
+    pullSecret: pullsecret:argo/acr-pull-secret
+  images:
+    - alias: frontend
+      imageName: akstestingtrialcrrt.azurecr.io/wanderlust-frontend
+  writeBackConfig:
+    method: git
+    gitConfig:
+      repository: https://github.com/guptamadhur409-spec/wanderlust-gitops.git
+      branch: main
+  applicationRefs:
+    - namePattern: ^wanderlust-frontend$
+      useAnnotations: true
