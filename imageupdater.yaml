@@ -14,7 +14,7 @@ spec:
       repository: https://github.com/guptamadhur409-spec/wanderlust-gitops.git
       branch: main
   applicationRefs:
-    - namePattern: ^wanderlust-frontend$
+    - namePattern: wanderlust-frontend
       useAnnotations: true
       images:
         - alias: frontend
