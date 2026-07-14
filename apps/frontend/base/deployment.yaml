@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: akstestingregistrymgre.azurecr.io/wanderlust-frontend
+          image: akstestingtrialcrrt.azurecr.io/wanderlust-frontend
           ports:
             - containerPort: 5173
