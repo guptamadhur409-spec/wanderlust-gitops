@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: wanderlust-frontend
-  namespace: argocd
+  namespace: argo
 
 spec:
   project: default
