@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: random-guestbook-appset
+  namespace: argo
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            namespace: random-guestbook-dev
+          - env: qa
+            namespace: random-guestbook-qa
+          - env: prod
+            namespace: random-guestbook-prod
+  template:
+    metadata:
+      name: random-guestbook-{{env}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps.git
+        targetRevision: HEAD
+        path: guestbook
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
